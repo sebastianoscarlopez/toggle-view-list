@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![Vercel Deploy](https://therealsujitk-vercel-badge.vercel.app/?app=toggle-view-list)
 
-## Getting Started
+Demo [https://toggle-view-list.vercel.app/?view-mode=cards](https://toggle-view-list.vercel.app/?view-mode=cards)
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+This repo is a proof of concept, with the only aim of grasp the concepts with RSC, SSR and SSG features. Also learning some of TailwindCSS
+
+
+The app is a simple list of items, with a toggle to change the view mode between cards and list, the data is fetched from https://trefle.io/api/v1/plants.
+
+---
+
+## How to run the app
+
+Get a token from https://trefle.io/ and create a .env.local file with the following content:
+
+```
+# This is the token from https://trefle.io/
+TREFLE_TOKEN=
+
+# This is the number of pages to fetch from the API, don't use number bigger than 40, it could be rejected by the API
+TREFLE_PAGES=5
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then run the following commands:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+nvm use
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### To test the SSR build the project and run the following command:
 
-## Learn More
+```
+npm run build
+npm run start
+```
 
-To learn more about Next.js, take a look at the following resources:
+The app will be available at http://localhost:3000 and notice that the app will be fetching data from the API, and images from several sites so you need to be connected to internet.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+>This app is really fast and it will still work disconnected from the internet due to SSG 🚀
